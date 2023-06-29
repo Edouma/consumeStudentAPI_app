@@ -1,9 +1,11 @@
+import NavigationBar from './components/NavigationBar';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <h1> Initial Setup</h1>
+      <NavigationBar/>
     </div>
   );
 }
