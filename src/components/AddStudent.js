@@ -18,8 +18,8 @@ const AddStudent = () => {
                 </Form.Group>
         
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Label>Gender:</Form.Label>
+                    <Form.Control type="input" placeholder="Password" />
                 </Form.Group>
                     <Button variant="primary" type="submit">
                 Add Student

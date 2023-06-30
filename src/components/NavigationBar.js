@@ -16,7 +16,7 @@ const NavigationBar = () => {
               <NavDropdown title="Student" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Add Student</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
-                  Another action
+                  All Students
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                 <NavDropdown.Divider />
