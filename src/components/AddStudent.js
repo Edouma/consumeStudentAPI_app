@@ -8,23 +8,28 @@ const AddStudent = () => {
     const [data, setData]=useState({
         firstname: "",
         lastname: "",
-        gender: "",
+        gender: ""
     })
     
+    // const handleChange =(e)=>{
+    //     const {name, value} = e.target;
+    //     setData((prev)=>{
+    //         return {...prev, [name]: value}
+    //     })
+    // }
+
     const handleChange =(e)=>{
-        const {name, value} = e.target;
-        setData((prev)=>{
-            return {...prev, [name]: value}
-        })
+        setData({...data, [e.target.name]: e.target.value})
     }
-    const saveStudent=()=>{
-        axios.post('http://localhost:4000/students')
-        .then(res=>{
-            console.log(data)
-        }).catch(err=>{
-            console.log(err)
-        })
+
+    const saveStudent=(e)=>{
+        e.preventDefault()
+        axios.post('http://localhost:4000/students',data)
+            .then(res=>console.log(res))
+            
+            .catch(err=>console.log(err.message))      
     }
+
     return (
         <div className='col-md-6 offset-md-3 addStudent'>
             <h3 className='mytext'> Add New student</h3>
@@ -49,8 +54,8 @@ const AddStudent = () => {
                     </Form.Select>
                 </Form.Group>
                     <Button variant="primary" type="submit">
-                Add Student
-                </Button>
+                    Add Student
+                    </Button>
             </Form>
 
         </div>
