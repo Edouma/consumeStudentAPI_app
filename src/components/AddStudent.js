@@ -1,13 +1,26 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios'
-
+import axios from 'axios';
+import { useState } from 'react';
 
 const AddStudent = () => {
+
+    const [data, setData]=useState({
+        firstname: "",
+        lastname: "",
+        gender: "",
+    })
+    
+    const handleChange =(e)=>{
+        const {name, value} = e.target;
+        setData((prev)=>{
+            return {...prev, [name]: value}
+        })
+    }
     const saveStudent=()=>{
         axios.post('http://localhost:4000/students')
         .then(res=>{
-            console.log(res)
+            console.log(data)
         }).catch(err=>{
             console.log(err)
         })
@@ -18,17 +31,22 @@ const AddStudent = () => {
             <Form onSubmit={saveStudent}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Firstname:</Form.Label>
-                    <Form.Control type="input" placeholder="Enter Firstname" />
+                    <Form.Control type="input" required onChange={handleChange} 
+                    name="firstname"placeholder="Enter Firstname" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Lastname:</Form.Label>
-                    <Form.Control type="input" placeholder="Enter Lastname" />
+                    <Form.Control type="input" required onChange={handleChange}
+                    name="lastname" placeholder="Enter Lastname" />
                 </Form.Group>
         
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Gender:</Form.Label>
-                    <Form.Control type="input" placeholder="Password" />
+                    <Form.Select>
+                         <option>--Gender--</option>
+                         <option>Male</option>
+                         <option>Female</option>
+                    </Form.Select>
                 </Form.Group>
                     <Button variant="primary" type="submit">
                 Add Student
