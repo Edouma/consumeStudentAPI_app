@@ -2,23 +2,21 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 const NavigationBar = () => {
     return (
+      <Router>
         <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Student App</Navbar.Brand>
+          <Navbar.Brand as={Link} to={"/"}>Student App</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
               <NavDropdown title="Student" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Add Student</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  All Students
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/addStudent">Add Student</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/allStudents"> All Students </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
@@ -27,7 +25,8 @@ const NavigationBar = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+       </Navbar>
+    </Router>
      );
 }
  

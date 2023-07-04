@@ -24,9 +24,9 @@ const AddStudent = () => {
 
     const saveStudent=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:4000/students',data)
+        axios.post('http://localhost:4000/students', data)
             .then(res=>console.log(res))
-            
+
             .catch(err=>console.log(err.message))      
     }
 
@@ -47,7 +47,7 @@ const AddStudent = () => {
                 </Form.Group>
         
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Select>
+                    <Form.Select onChange={handleChange} name="gender">
                          <option>--Gender--</option>
                          <option>Male</option>
                          <option>Female</option>
