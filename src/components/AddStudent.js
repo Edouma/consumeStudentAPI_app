@@ -2,6 +2,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useState } from 'react';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddStudent = () => {
 
@@ -21,13 +23,24 @@ const AddStudent = () => {
     const handleChange =(e)=>{
         setData({...data, [e.target.name]: e.target.value})
     }
-
+    
     const saveStudent=(e)=>{
         e.preventDefault()
         axios.post('http://localhost:4000/students', data)
-            .then(res=>console.log(res))
-
-            .catch(err=>console.log(err.message))      
+        .then(res => {
+            toast.success('New student added successfully', {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 3000,
+            });
+            
+        })
+        .catch(err => {
+            toast.error('An error occurred while adding the record.', {
+                position: toast.POSITION.TOP_RIGHT,
+                autoClose: 3000,
+            });
+        });
+                
     }
 
     return (
@@ -56,6 +69,8 @@ const AddStudent = () => {
                     <Button variant="primary" type="submit">
                     Add Student
                     </Button>
+                    
+                    <ToastContainer/>
             </Form>
 
         </div>

@@ -20,7 +20,7 @@ const Login = () => {
     const loginUser = async(e)=>{
         e.preventDefault()
         try {    
-        const response = await axios.post('http://localhost:4000/auth/login', {email, password} ) 
+        const response = await axios.post('http://localhost:4000/login', {email, password} ) 
         
         if (response.status === 200) {
     
@@ -40,7 +40,7 @@ const Login = () => {
             
         } catch (error) {
              setError('An error occurred. Login the user Please try again.');   
-               
+            
         } 
     }
 

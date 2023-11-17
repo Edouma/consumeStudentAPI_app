@@ -18,9 +18,9 @@ const NavigationBar = () => {
                 <NavDropdown.Item as={Link} to="/addStudent">Add Student</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/allStudents"> All Students </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
+                {/* <NavDropdown.Item href="#action/3.4">
                   Separated link
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
