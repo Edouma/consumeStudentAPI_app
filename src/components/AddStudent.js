@@ -26,7 +26,15 @@ const AddStudent = () => {
     
     const saveStudent=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:4000/students', data)
+
+        const token = sessionStorage.getItem("access_token")
+        
+        axios.post('http://localhost:4000/students', data, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          })
         .then(res => {
             toast.success('New student added successfully', {
                 position: toast.POSITION.TOP_RIGHT,
